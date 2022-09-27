@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController as FrontendController;
+use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\userController;
-use App\Http\Controllers\Auth\HomeController; //new
 use App\Http\Controllers\jobsboardController;
-use App\Http\Controllers\userdashboardController;
-use App\Http\Controllers\AboutCompanyController;
 use App\Http\Controllers\ScholarshipController;
+use App\Http\Controllers\AboutCompanyController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\userdashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +30,17 @@ use App\Http\Controllers\ScholarshipController;
 // });
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/index');
 });
+
+// frontend routes
+Route::get('/index', [FrontendController::class, 'index'])->name('home');
+Route::get('/about', [FrontendController::class, 'about'])->name('aboutus');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contactus');
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+Route::get('/job-details/{job}', [JobController::class, 'show'])->name('job_details');
+Route::get('/scholarships/list', [ScholarshipController::class, 'list'])->name('scholarships');
+Route::get('/scholarship-details/{id}', [ScholarshipController::class, 'scholarship'])->name('scholarship-detail');
 
 Auth::routes();
 
@@ -40,7 +51,6 @@ Route::get("user/home", [App\Http\Controllers\userdashboardController::class, 'i
 Route::view("/charts", 'layouts.charts');
 Route::view("/typography", 'layouts.typography');
 Route::view("/tables", 'layouts.tables');
-Route::view("/About_US", 'layouts.About_Us');
 Route::view("/scholarships", 'layouts.scholar');
 
 // Route::resource("/home", userController::class);
@@ -66,7 +76,7 @@ Route::delete("/delete-selected-job", [jobsboardController::class, 'checkdelete'
 
 // // // // Company Info
 
-Route::get('/About_US', [AboutCompanyController::class, 'index']);
+Route::get('/company', [AboutCompanyController::class, 'index']);
 Route::get('/Add_Info', [AboutCompanyController::class, 'create']);
 Route::post('/Insert_data', [AboutCompanyController::class, 'store']);
 Route::get('/view-info/{id}', [AboutCompanyController::class, 'show']);

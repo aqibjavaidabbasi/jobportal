@@ -20,6 +20,17 @@ class ScholarshipController extends Controller
         return view('layouts.scholar')->with('students', $user);
     }
 
+    public function list()
+    {
+        $scholarships = scholarships::paginate(20);
+        return view('frontend.views.scholarships.index')->with('scholarships', $scholarships);
+    }
+
+    public function scholarship($id) {
+        $scholarship = scholarships::find($id);
+        return view('frontend.views.scholarships.show')->with('scholarship', $scholarship);
+    }
+
     public function create()
     {
         return view('layouts.create_scholarships');

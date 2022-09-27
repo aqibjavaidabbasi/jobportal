@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class jobsboards extends Model
 {
-     // use HasFactory;
+     use HasFactory;
      protected $table = 'job_portal';
      protected $primaryKey = 'id';
      protected $fillable = ['company', 'location','title', 'category', 'jobd', 'qf', 'jobt', 'gender', 'vacancy', 'salary', 'ad', 'joind'];
@@ -15,4 +15,8 @@ class jobsboards extends Model
      // protected $encryptable=[
      //     'name', 'email','is_admin', 'password'
      // ];
+
+     public function company_detail() {
+          return $this->belongsTo('App\Models\AboutCompany', 'company', 'id');
+     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class scholarships extends Model
 {
-    // use HasFactory;
+    use HasFactory;
 
     protected $table = 'company_scholarship';
     protected $primaryKey = 'id';

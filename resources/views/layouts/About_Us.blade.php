@@ -141,7 +141,7 @@ ul.dropdown-menu.dropdown-menu-right.show {
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class=" nav-item"><a href="/home"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
-          <li class=" active "><a href="/About_US"><i class="fa-solid fa-address-book"></i><span class="menu-title" data-i18n="">About US</span></a>
+          <li class=" active "><a href="/company"><i class="fa-solid fa-address-book"></i><span class="menu-title" data-i18n="">Companies</span></a>
           </li>
           <li class="nav-item"><a href="/jobs_board"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Jobs Portal</span></a>
           </li>
